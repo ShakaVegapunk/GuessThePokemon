@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Pokemon</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-serif m-0">
+    <h1 class="text-4xl font-medium text-center mt-5">Who's That Pokemon?</h1>
+<div id="card" class="flex flex-col items-center justify-center mt-10">
+        <img id="pokemon" class="w-64 h-64" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png" alt="Pokemon">
+        <input id="guess" class="text-center text-2xl font-medium mt-5" type="text" placeholder="Guess the Pokemon">
+        <button 
+            hx-get="/getPokemon"
+            hx-trigger="click"
+            hx-target="#pokemon"
+            hx-swap="outerHTML"
+
+            class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next</button>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+{
+  "name": "whosthatpokemon",
+  "version": "1.0.0",
+  "description": "A game where you guess the pokemon",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "vegapunk",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
