@@ -1,6 +1,8 @@
+// Purpose: Fetches a random pokemon from the pokeapi and renders it to the DOM
 import fetch from "../node_modules/node-fetch/src/index.js";
 const url = "https://pokeapi.co/api/v2/pokemon";
 const limit = 151;
+const seenPokemon = [];
 
 async function fetchData(url) {
     const response = await fetch(url);
@@ -8,7 +10,13 @@ async function fetchData(url) {
 }
 
 function getRandomNumber() {
-    return Math.floor(Math.random() * limit) + 1;
+    let randomNumber;
+    do {
+        randomNumber = Math.floor(Math.random() * limit) + 1;
+    }
+    while (seenPokemon.includes(randomNumber));
+    seenPokemon.push(randomNumber);
+    return randomNumber;
 }
 
 export async function renderRandomPokemon() {
@@ -22,12 +30,12 @@ export async function renderRandomPokemon() {
 
 export function pokemonDetails(pokemon) {
     const { name, id, sprites } = pokemon;
-    const pokemonImage = sprites.front_default || 'https://via.placeholder.com/150'; 
+    const pokemonImage = sprites.front_default;
     return {name, id, pokemonImage};
 }
 
 function generatePokemonCard({ pokemonImage }) {
    return `
-    <img src="${pokemonImage}"id="pokemon" class="w-64 h-64" />
-`
+         <img src="${pokemonImage}" id="pokemon" class="w-64 h-64" />
+    `
 }

@@ -1,4 +1,4 @@
-import { renderRandomPokemon } from './src/utils.js';
+import { renderRandomPokemon } from './src/pokemon.js';
 import express from './node_modules/express/index.js';
 
 const app = express();
@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 //Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-// Routes
 app.listen(port, () => console.log('Server running on port 3000'));
 
 app.get('/getPokemon', async (req, res) => {
